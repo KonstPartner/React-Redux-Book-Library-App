@@ -14,7 +14,7 @@
   background-color: #0a1a2d;
 }
 
-.App main{
+.App main {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -27,4 +27,18 @@
   margin: 0 5px;
   padding: 10px;
   border-radius: 5px;
+}
+
+.spinner {
+  animation: spinner 1s infinite linear;
+}
+
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
