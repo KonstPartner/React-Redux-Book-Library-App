@@ -1,14 +1,20 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import './BookForm.css'
+import { addBook } from '../../redux/slices/booksSlice'
+import { createBook } from '../../utils/createBook'
 
 const BookForm = () => {
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
 
+  const dispatch = useDispatch()
+
   const handleSubmit = (e) => {
     e.preventDefault()
     setTitle('')
     setAuthor('')
+    dispatch(addBook(createBook({ title, author }, 'manual')))
   }
 
   return (
