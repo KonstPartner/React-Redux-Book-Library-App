@@ -12,8 +12,9 @@
   margin-top: 20px;
 }
 
-.list span{
-  display: flex;
+.list div {
+  text-wrap: wrap;
+  margin-right: 10px;
 }
 
 .list li {
@@ -43,7 +44,11 @@
   margin-right: 20px;
 }
 
-.favorite-icons .icon{
+.favorite-icons .icon {
   width: 25px;
   height: auto;
+}
+
+.book-list .highlight {
+  background-color: #ff0;
 }

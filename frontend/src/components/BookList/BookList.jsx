@@ -30,7 +30,20 @@ const BookList = () => {
       (filters.onlyFavorite ? book.isFavorite : true)
   )
 
-  console.log(filteredBooks)
+  const highlightMatch = (text, filter) => {
+    if (!filter) return text
+    const regex = new RegExp(`(${filter})`, 'gi')
+    return text.split(regex).map((chars, index) =>
+      regex.test(chars) ? (
+        <span key={index} className="highlight">
+          {chars}
+        </span>
+      ) : (
+        chars
+      )
+    )
+  }
+
   return (
     <div className="book-list">
       <h2>Book List</h2>
@@ -39,11 +52,12 @@ const BookList = () => {
           ? 'No books availible'
           : filteredBooks.map((book, i) => (
               <li key={book.id}>
-                <span>
-                  {++i}. {book.title} by <strong>{book.author} </strong> (
-                  {book.source})
-                </span>
-                <span>
+                <div>
+                  {++i}. {highlightMatch(book.title, filters.title)} by{' '}
+                  <strong>{highlightMatch(book.author, filters.author)}</strong>{' '}
+                  ({book.source})
+                </div>
+                <div>
                   <button
                     className="favorite-icons"
                     onClick={() => handleToggleIsFavorite(book.id)}
@@ -60,7 +74,7 @@ const BookList = () => {
                   >
                     Delete
                   </button>
-                </span>
+                </div>
               </li>
             ))}
       </ul>
