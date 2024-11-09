@@ -13,3 +13,18 @@
   width: 100%;
   background-color: #0a1a2d;
 }
+
+.App main{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: none;
+  color: #fff;
+  background-color: #007bff;
+  margin: 0 5px;
+  padding: 10px;
+  border-radius: 5px;
+}

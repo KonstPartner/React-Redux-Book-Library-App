@@ -1,0 +1,26 @@
+.book-filter {
+  background-color: #f2f2f2;
+  padding: 20px 30px;
+  margin: 20px;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+.filter-inputs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.filter-inputs input {
+  margin: 5px 0;
+  padding: 7px 10px;
+}
+
+.book-filter button {
+  max-width: 100px;
+  margin: 0 auto;
+}

@@ -51,11 +51,13 @@ const BookForm = () => {
           </label>
         </div>
         <div className="btns">
-          <button type="submit">Add Book</button>
-          <button type="button" onClick={handleAddRandomBook}>
+          <button type="submit" className="btn">
+            Add Book
+          </button>
+          <button type="button" onClick={handleAddRandomBook} className="btn">
             Add Random
           </button>
-          <button>Add Random Via API</button>
+          <button className="btn">Add Random Via API</button>
         </div>
       </form>
     </div>

@@ -8,9 +8,13 @@ import {
   toggleIsFavorite,
 } from '../../redux/slices/booksSlice'
 
+import { selectFilters } from '../../redux/slices/filterSlice'
+
 const BookList = () => {
   const books = useSelector(selectBooks)
   const dispatch = useDispatch()
+
+  const filters = useSelector(selectFilters)
 
   const handleDeleteBook = (id) => {
     dispatch(deleteBook(id))
@@ -19,13 +23,21 @@ const BookList = () => {
     dispatch(toggleIsFavorite(id))
   }
 
+  const filteredBooks = books.filter(
+    (book) =>
+      book.title.toLowerCase().includes(filters.title.toLowerCase()) &&
+      book.author.toLowerCase().includes(filters.author.toLowerCase()) &&
+      (filters.onlyFavorite ? book.isFavorite : true)
+  )
+
+  console.log(filteredBooks)
   return (
     <div className="book-list">
       <h2>Book List</h2>
       <ul className="list">
-        {!books.length
+        {!filteredBooks.length
           ? 'No books availible'
-          : books.map((book, i) => (
+          : filteredBooks.map((book, i) => (
               <li key={book.id}>
                 <span>
                   {++i}. {book.title} by <strong>{book.author} </strong> (

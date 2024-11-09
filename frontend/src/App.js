@@ -1,4 +1,5 @@
 import './App.css'
+import BookFilter from './components/BookFilter/BookFilter'
 import BookForm from './components/BookForm/BookForm'
 import BookList from './components/BookList/BookList'
 import Error from './components/Error/Error'
@@ -11,7 +12,10 @@ function App() {
       </header>
       <main>
         <BookForm />
-        <BookList />
+        <section>
+          <BookFilter />
+          <BookList />
+        </section>
       </main>
       <Error />
     </div>
