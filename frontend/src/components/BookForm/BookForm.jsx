@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux'
 import './BookForm.css'
 import { addBook } from '../../redux/slices/booksSlice'
 import { createBook } from '../../utils/createBook'
+import books from '../../data/books.json'
+import { setError } from '../../redux/slices/errorSlice'
 
 const BookForm = () => {
   const [title, setTitle] = useState('')
@@ -14,7 +16,16 @@ const BookForm = () => {
     e.preventDefault()
     setTitle('')
     setAuthor('')
-    dispatch(addBook(createBook({ title, author }, 'manual')))
+    if (title && author) {
+      dispatch(addBook(createBook({ title, author }, 'manual')))
+    } else {
+      dispatch(setError('You should fill title and author !'))
+    }
+  }
+
+  const handleAddRandomBook = () => {
+    const bookIndex = Math.floor(Math.random() * books.length)
+    dispatch(addBook(createBook(books[bookIndex], 'random')))
   }
 
   return (
@@ -41,7 +52,9 @@ const BookForm = () => {
         </div>
         <div className="btns">
           <button type="submit">Add Book</button>
-          <button>Add Random</button>
+          <button type="button" onClick={handleAddRandomBook}>
+            Add Random
+          </button>
           <button>Add Random Via API</button>
         </div>
       </form>
