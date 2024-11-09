@@ -1,0 +1,50 @@
+.book-list {
+  background-color: #f2f2f2;
+  max-width: 460px;
+  padding: 20px 0;
+  margin: 20px;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+.list {
+  margin-top: 20px;
+}
+
+.list span{
+  display: flex;
+}
+
+.list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+  align-items: center;
+  background: #fff;
+}
+
+.list li:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.delete-btn {
+  border: 1px solid red;
+  border-radius: 5px;
+  background-color: #fff;
+  color: red;
+  padding: 8px 10px;
+}
+
+.favorite-icons {
+  color: #fca510;
+  border: none;
+  background-color: transparent;
+  margin-right: 20px;
+}
+
+.favorite-icons .icon{
+  width: 25px;
+  height: auto;
+}

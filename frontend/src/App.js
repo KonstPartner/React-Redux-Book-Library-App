@@ -1,5 +1,6 @@
 import './App.css'
 import BookForm from './components/BookForm/BookForm'
+import BookList from './components/BookList/BookList'
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       </header>
       <main>
         <BookForm />
+        <BookList />
       </main>
     </div>
   )

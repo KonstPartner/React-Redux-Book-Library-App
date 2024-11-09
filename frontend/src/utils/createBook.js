@@ -6,5 +6,6 @@ export const createBook = ({ title, author }, source) => {
     author,
     id: uuidv4(),
     source,
+    isFavorite: false
   }
 }
