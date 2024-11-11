@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+:root {
+  --white: #fff;
+  --black: #000;
+  --background: #112d49;
+  --header-bg: #0a1a2d;
+  --card-bg: #f2f2f2;
+  --btn-bg: #007bff;
+  --btn-hover-bg: #0056b3;
+}
+
+body {
+  background-color: var(--background);
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+@mixin flexModel($direction: row, $justifyContent: left, $alignItems: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+}
+
+.app {
+  color: var(--white);
+  @include flexModel(column);
+
+  &__header,
+  &__main {
+    width: 100vw;
+  }
+
+  &__header {
+    text-align: center;
+    background-color: var(--header-bg);
+
+    h1 {
+      overflow-y: hidden;
+    }
+  }
+
+  &__main {
+    @include flexModel($justifyContent: center);
+
+    @media (min-width: 1025px) {
+      max-width: 1440px;
+      gap: 3%;
+    }
+
+    @media (max-width: 1024px) {
+      flex-direction: column;
+    }
+  }
+
+  &__section {
+    @include flexModel(column, center);
+    align-self: start;
+  }
+}
+
+.card {
+  @include flexModel(column, center);
+  color: var(--black);
+  background-color: var(--card-bg);
+  margin-top: 30px;
+  padding: 20px 0;
+  border-radius: 7px;
+  text-align: center;
+
+  @media (max-width: 1024px) and (min-width: 451px) {
+    width: 90%;
+  }
+
+  @media (max-width: 450px) {
+    width: 85%;
+  }
+}
+
+.btn {
+  background-color: var(--btn-bg);
+  color: (var(--white));
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px;
+  transition: all 0.5s;
+  width: fit-content;
+}
+
+.btn:hover {
+  background-color: var(--btn-hover-bg);
+}
+
+.delete-btn {
+  border: 1px solid red;
+  color: red;
+  background-color: var(--white);
+  transition: all 0.5s;
+  padding: 4px 9px;
+  border-radius: 3px;
+}
+
+.delete-btn:hover {
+  background-color: #fdd;
+}
+
+.text-input {
+  padding: 7px 10px;
+  border: 1px solid #ccc;
+}

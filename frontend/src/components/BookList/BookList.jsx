@@ -1,7 +1,7 @@
 import React from 'react'
 import { BsBookmarkStarFill, BsBookmarkStar } from 'react-icons/bs'
 import { useDispatch, useSelector } from 'react-redux'
-import './BookList.css'
+import './BookList.scss'
 import {
   deleteBook,
   selectBooks,
@@ -45,27 +45,27 @@ const BookList = () => {
   }
 
   return (
-    <div className="book-list">
-      <h2>Book List</h2>
-      <ul className="list">
+    <div className="book-list card w-[90%] lg:w-full">
+      <h2 className="text-2xl font-bold">Book List</h2>
+      <ul className="book-list__list w-full my-[10px]">
         {!filteredBooks.length
           ? 'No books availible'
           : filteredBooks.map((book, i) => (
-              <li key={book.id}>
-                <div>
+              <li key={book.id} className="book-list__list--item p-[12px]">
+                <div className="book-list__list--name w-[80%]">
                   {++i}. {highlightMatch(book.title, filters.title)} by{' '}
                   <strong>{highlightMatch(book.author, filters.author)}</strong>{' '}
                   ({book.source})
                 </div>
-                <div>
+                <div className="book-list__list--actions w-[100px]">
                   <button
                     className="favorite-icons"
                     onClick={() => handleToggleIsFavorite(book.id)}
                   >
                     {!!book.isFavorite ? (
-                      <BsBookmarkStarFill className="icon" />
+                      <BsBookmarkStarFill className="favorite-icons__icon w-[25px]" />
                     ) : (
-                      <BsBookmarkStar className="icon" />
+                      <BsBookmarkStar className="favorite-icons__icon w-[25px]" />
                     )}
                   </button>
                   <button

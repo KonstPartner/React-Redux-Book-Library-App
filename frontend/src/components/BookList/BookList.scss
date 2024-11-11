@@ -1,0 +1,45 @@
+@use '../../App.scss' as App;
+
+.book-list {
+
+  &__list {
+
+    &--item {
+      @include App.flexModel($justifyContent: space-between);
+    }
+
+    &--name {
+      text-align: left;
+    }
+
+    &--actions {
+      @include App.flexModel($justifyContent: space-between);
+    }
+
+    &--item {
+      border-bottom: 1px solid #ccc;
+    }
+
+    &--item:nth-child(odd) {
+      background-color: #fff;
+    }
+
+    &--item:hover{
+      background-color: #dbe4f8;
+    }
+  }
+
+  .highlight {
+    background-color: #ff0;
+  }
+}
+
+.favorite-icons {
+  background-color: transparent;
+  border: none;
+
+  &__icon {
+    color: #fca510;
+    height: auto;
+  }
+}

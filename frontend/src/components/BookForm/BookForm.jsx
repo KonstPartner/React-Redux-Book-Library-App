@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { FaSpinner } from 'react-icons/fa'
-import './BookForm.css'
+import './BookForm.scss'
 import {
   addBook,
   fetchBook,
@@ -40,28 +40,33 @@ const BookForm = () => {
   }
 
   return (
-    <div className="book-form">
-      <h2>Add New Book</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>
+    <div className="book-form card lg:w-[25%] m-auto lg:m-0">
+      <h2 className="text-2xl font-bold">Add New Book</h2>
+      <form
+        onSubmit={handleSubmit}
+        className="book-form__form w-[90%] lg:w-[80%]"
+      >
+        <div className="book-form__inputs mb-[30px]">
+          <label className="w-full">
             <input
+              className="text-input w-[90%] lg:w-full"
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
-            Title:
+            <p className="m-[5px]">Title:</p>
           </label>
-          <label>
+          <label className="w-full">
             <input
+              className="text-input w-[90%] lg:w-full"
               type="text"
               value={author}
               onChange={(e) => setAuthor(e.target.value)}
             />
-            Author:
+            <p className="m-[5px]">Author:</p>
           </label>
         </div>
-        <div className="btns">
+        <div className="book-form__buttons w-[95%]">
           <button type="submit" className="btn">
             Add Book
           </button>
@@ -75,9 +80,9 @@ const BookForm = () => {
             disabled={isLoading}
           >
             {isLoading ? (
-              <>
-                Loading Book <FaSpinner className="spinner" />
-              </>
+              <div className='flex items-center'>
+                Loading Book...<FaSpinner className="spinner" />
+              </div>
             ) : (
               'Add Random Via API'
             )}

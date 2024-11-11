@@ -1,0 +1,11 @@
+@use '../../App.scss' as App;
+
+.book-filter {
+  &__inputs {
+    @include App.flexModel($justifyContent: space-between);
+
+    @media (max-width: 1024px) {
+      flex-direction: column;
+    }
+  }
+}
