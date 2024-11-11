@@ -5,7 +5,7 @@ import { setError } from './errorSlice'
 
 const initialState = {
   books: [],
-  isLoading: false
+  isLoading: false,
 }
 
 export const fetchBook = createAsyncThunk(
@@ -29,12 +29,18 @@ const booksSlice = createSlice({
       state.books.push(action.payload)
     },
     deleteBook: (state, action) => {
-      return {...state, books: state.books.filter((book) => book.id !== action.payload)}
+      return {
+        ...state,
+        books: state.books.filter((book) => book.id !== action.payload),
+      }
     },
     toggleIsFavorite: (state, action) => {
       state.books.forEach((book) =>
         book.id === action.payload ? (book.isFavorite = !book.isFavorite) : book
       )
+    },
+    setAllBooks: (state, action) => {
+      return { ...state, books: action.payload }
     },
   },
   extraReducers: (builder) => {
@@ -55,7 +61,7 @@ const booksSlice = createSlice({
 
 export default booksSlice.reducer
 
-export const { addBook, deleteBook, toggleIsFavorite } = booksSlice.actions
+export const { addBook, deleteBook, toggleIsFavorite, setAllBooks } = booksSlice.actions
 
 export const selectBooks = (state) => state.books.books
 
